@@ -1,0 +1,20 @@
+
+###
+# 
+###
+
+
+# NO TABLES
+
+library(rvest)
+library(dplyr)
+
+# save url 
+# https://www.cisco.com/c/en/us/solutions/collateral/service-provider/global-cloud-index-gci/q-and-a-c67-738065.html
+index_qa.url <- read_html("https://www.cisco.com/c/en/us/solutions/collateral/service-provider/global-cloud-index-gci/q-and-a-c67-738065.html")
+
+# scrape tables from url into a list 
+index_qa.tbls <- index_qa.url %>%
+  # gets all tables 
+  html_nodes("table") %>%
+  html_table()
